@@ -1,0 +1,3 @@
+$catalog Room local
+class Room inherits Object
+end

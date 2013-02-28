@@ -1,0 +1,3 @@
+$catalog PlayersHoldall local
+class PlayerHoldall inherits Container
+end

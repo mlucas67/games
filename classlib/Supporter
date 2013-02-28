@@ -1,0 +1,3 @@
+$catalog Supporter local
+class Supporter inherits Thing
+end

@@ -1,0 +1,48 @@
+$catalog TestCase local
+class TestCase
+
+    $define default 1
+
+    public subroutine assertEqual(var1, var2)
+        begin case
+            case ((objinfo(var1, 0)) & (objinfo(var2, 0)))
+                if (objinfo(var1, 1) = objinfo(var2, 1)) then
+                    if (var1->equals(var2)) then
+                        null
+                    end else
+                        crt objinfo(var1, 1) : "->equals(" : objinfo(var2, 1) : ") failed!"
+                    end
+                end else
+                    crt "Expected object " : objinfo(var1, 1) : " got object " : objinfo(var2, 1)
+                end
+            case ((objinfo(var1, 0)) ! (objinfo(var2, 0)))
+                if (objinfo(var1, 0)) then
+                    crt "Expected object " : objinfo(var1, 1) : " got value " : var2
+                end else
+                    crt "Expected value " : var1 : " got object " : objinfo(var2, 1)
+                end
+            case (var1 = var2)
+                null
+            case 1
+                crt "Expected " : var1 : " got " : var2
+        end case
+    end
+
+    public subroutine assertIsObject(obj, name)
+        begin case
+            case objinfo(obj, 0)
+                if (objinfo(obj, 1) # name) then
+                    crt "Expected object " : name : " got object " : objinfo(obj, 1)
+                end 
+            case assigned(obj)
+                crt "Expected object " : name : " got value " : obj
+            case default
+                crt "Expected object " : name : " got unassigned variable"
+        end case
+    end
+    
+    public function undefined()
+        return @false
+    end
+
+end

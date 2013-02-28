@@ -1,0 +1,3 @@
+$catalog Man local
+class Man inherits Person
+end

@@ -1,0 +1,3 @@
+$catalog Region local
+class Region inherits Object
+end

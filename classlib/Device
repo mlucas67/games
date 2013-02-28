@@ -1,0 +1,3 @@
+$catalog Device local
+class Device inherits Thing
+end

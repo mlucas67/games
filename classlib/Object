@@ -1,0 +1,10 @@
+$catalog Object local
+class Object
+
+    public uuid
+    
+    public sub create.object()
+        uuid = system(1047)
+    end
+    
+end

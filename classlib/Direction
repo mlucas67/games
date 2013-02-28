@@ -1,0 +1,3 @@
+$catalog Direction local
+class Direction inherits Object
+end

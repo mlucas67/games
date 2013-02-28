@@ -1,0 +1,3 @@
+$catalog Thing local
+class Thing inherits Object
+end

@@ -1,0 +1,3 @@
+$catalog Woman local
+class Woman inherits Person
+end

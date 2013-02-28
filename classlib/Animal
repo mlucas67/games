@@ -1,0 +1,3 @@
+$catalog Animal local
+class Animal inherits Person
+end

@@ -1,0 +1,44 @@
+$catalog Story local
+class Story
+    
+    $define FULL_LENGTH 1
+    $define ABBREVIATED 2
+    $define VERBOSE 1
+    $define BRIEF 2
+    $define SUPERBRIEF 3
+    $define FAST 1
+    $define SLOW 2
+    
+    public title, author, releaseNumber, creationYear, headline, genre, description, ifid
+    public dynamicMemory, maxThingsUnderstood, ineffectual, americanDialect, serialComma
+    public roomDescriptionType, memoryEconomy, noScoring, commandLineEcho, undoPrevent
+    public predictableRandomization, routeFindingMode, numberedRules, telemetryRecord
+    public noDeprecatedFeatures, roomDescriptionMode
+    
+    public sub create.object()
+        ifid = system(1047)
+        title = ''
+        author = ''
+        releaseNumber = ''
+        creationYear = oconv(date(), "DY")
+        healine = ''
+        genre = ''
+        description = ''
+        dynamicMemory = 8192
+        maxThingsUnderstood = 100
+        ineffectual = @false
+        americanDialect = @false
+        serialComma = @false
+        roomDescriptionType = FULL_LENGTH
+        roomDescriptionMode = VERBOSE
+        memoryEconomy = @false
+        noScoring = @false
+        commandLineEcho = @false
+        undoPrevent = @false
+        predictableRandomization = @false
+        routeFindingMode = FAST
+        numberedRules = @false
+        telemetryRecord = @false
+    end
+    
+end

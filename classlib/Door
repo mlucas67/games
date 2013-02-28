@@ -1,0 +1,3 @@
+$catalog Door local
+class Door inherits Thing
+end

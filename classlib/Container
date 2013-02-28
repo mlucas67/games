@@ -1,0 +1,3 @@
+$catalog Container local
+class Container inherits Thing
+end

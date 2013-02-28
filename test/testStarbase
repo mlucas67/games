@@ -1,0 +1,14 @@
+$catalog testStarbase local
+class testStarbase inherits TestCase
+
+    private Starbase
+    
+    public subroutine create.object()
+        Starbase = object("Starbase")
+    end
+    
+    public subroutine testConstructor()
+        me->assertIsObject(Starbase, "STARBASE")
+    end
+
+end

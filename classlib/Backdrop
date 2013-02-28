@@ -1,0 +1,3 @@
+$catalog Backdrop local
+class Backdrop inherits Thing
+end
