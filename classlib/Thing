@@ -1,3 +1,134 @@
 $catalog Thing local
+$include constants.h
 class Thing inherits Object
+
+    private unlit, inedible, portable, publicallyNamed, described, unmarked, scenery
+    
+    public wearable, pushable, handled, description, initialAppearance
+
+    public sub create.object()
+        canRepeat = @true
+        isUnderstood = @true
+        specification = "Represents anything interactive in the model world that is not a room.  People, pieces of scenery, furniture, doors and mislaid umbrellas might all be examples, and so might more surprising things like the sound of birdsong or a shaft of sunlight."
+        
+        unlit = @true
+        inedible = @true
+        portable = @true
+        publicallyNamed = @true
+        descibed = @true
+        unmarked = @true
+        
+        scenery = @false
+        wearable = @false
+        pushable = @false
+        handled = @false
+        description = ''
+        initialAppearance = ''
+    end
+    
+    set unlit(value=true) var.args
+        unlit = value
+    end
+    
+    get unlit()
+        return unlit
+    end
+    
+    set lit(value=true) var.args
+        unlit = not(value)
+    end
+    
+    get lit()
+        return not(unlit)
+    end
+    
+    set inedible(value=true) var.args
+        inedible = value
+    end
+    
+    get inedible()
+        return inedible
+    end
+    
+    set edible(value=true) var.args
+        inedible = not(value)
+    end
+    
+    get edible()
+        return not(inedible)
+    end
+    
+    set portable(value=true) var.args
+        portable = value
+    end
+    
+    get portable()
+        return portable
+    end
+    
+    set fixed(value=true) var.args
+        portable = not(value)
+    end
+    
+    get fixed()
+        return not(portable)
+    end
+    
+    set publicallyNamed(value=true) var.args
+        publicallyNamed = value
+    end
+    
+    get publicallyNamed()
+        return publicallyNamed
+    end
+    
+    set privatelyNamed(value=true) var.args
+        publicallyNamed = not(value)
+    end
+    
+    get privatelyNamed()
+        return not(publicallyNamed)
+    end
+    
+    set described(value=true) var.args
+        described = true
+    end
+    
+    get described()
+        return described
+    end
+    
+    set undescribed(value=true) var.args
+        described = not(value)
+    end
+    
+    get undescribed()
+        return not(described)
+    end
+    
+    set unmarked(value=true) var.args
+        unmarked = value
+    end
+    
+    get unmarked()
+        return unmarked
+    end
+    
+    set marked(value=true) var.args
+        unmarked = not(marked)
+    end
+    
+    get marked()
+        return not(unmarked)
+    end
+    
+    set scenery(value=true) var.args
+        scenery = value
+        if (scenery) then me->fixed(true)
+    end
+    
+    get scenery()
+        return scenery
+    end
+
 end

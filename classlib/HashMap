@@ -1,0 +1,75 @@
+$debug
+$catalog HashMap local
+class HashMap
+    
+    private map
+    
+    public sub create.object()
+        map = '' : @fm : ''
+    end
+    
+    public function hash(key)
+        length = len(key)
+        sum = 0
+        for l = 1 to length
+            ch = key[l,1]
+            sum += seq(ch)
+        next l
+        return (mod(sum, 11) + 1)
+    end
+    
+    public sub put(key, value)
+        v = mod(hash(key), 11) + 1
+        if (map<1,v> = '') then
+            map = insert(map, 1, v; key)
+            map = insert(map, 2, v; value)
+            sv = 0
+        end else
+            locate key in map<1,v,1> by "al" setting sv then
+                throw "DUPLICATE.KEY"
+            end else
+                map = insert(map, 1, v, sv; key)
+                map = insert(map, 2, v, sv; value)
+            end
+        end
+    end
+    
+    public sub set(key, value)
+        v = mod(hash(key), 11) + 1
+        locate key in map<1,v,1> by "al" setting sv then
+            map<1,v,sv> = value
+        end else
+            throw "KEY.NOT.FOUND"
+        end
+    end
+    
+    public function get(key)
+        v = mod(hash(key), 11) + 1
+        locate key in map<1,v,1> by "al" setting sv then
+            return map<2,v,sv>
+        end
+        throw "KEY.NOT.FOUND"
+        return @false
+    end
+    
+    public function hasKey(key)
+        v = mod(hash(key), 11) + 1
+        locate key in map<1,v,1> by "al" setting sv then return @true
+        return @false
+    end
+    
+    public function hasValue(value)
+        v = "*NONESUCH*"
+        values = map<2>
+        loop
+            remove v from values setting more
+        while ((v # value) and more)
+        repeat
+        return (v = value)
+    end
+    
+    public function getMap()
+        return map
+    end
+    
+end

@@ -1,10 +1,84 @@
 $catalog Object local
+$include constants.h
 class Object
 
-    public uuid
-    
+    private properties
+    private singularNamed, improperNamed
+
+    public uuid, canRepeat, hasProperties, isUnderstood
+    public specification, indefiniteAppearanceText, variableInitialValue
+    public printedName, printedPluralName, indefiniteArticle
+
     public sub create.object()
+        singularNamed = @true
+        improperNamed = @true
+        properties = object("HashMap")
+
         uuid = system(1047)
+        canRepeat = @false
+        hasProperties = @true
+        isUnderstood = @false
+        specification = ''
+        indefiniteAppearanceText = ''
+        variableInitialValue = 0
+        printedName = ''
+        printedPluralName = ''
+        indefiniteArticle = ''
+    end
+
+    public sub addProperty(property, value)
+        try
+            properties->put(property, value)
+        catch DUPLICATE.KEY
+            throw "PROPERTY.ALREADY.EXISTS"
+        end
+    end
+
+    public sub setProperty(property, value)
+        if not(properties->hasKey(property)) then
+            throw "PROPERTY.NOT.FOUND"
+        end
+        try
+            properties->set(property, value)
+        catch KEY.NOT.FOUND
+            throw "PROPERTY.NOT.FOUND"
+        end
     end
     
+    public function getProperty(property)
+        value = properties->get(property)
+    end
+    
+    set singularNamed(value=true) var.args
+        singularNamed = value
+    end
+    
+    get singularNamed()
+        return singularNamed
+    end
+    
+    set pluralNamed(value=true) var.args
+        singularNamed = not(value)
+    end
+    
+    get pluralNamed()
+        return not(singularNamed)
+    end
+    
+    set improperNamed(value=true) var.args
+        improperNamed = value
+    end
+    
+    get improperNamed()
+        return improperNamed
+    end
+    
+    set properNamed(value=true) var.args
+        improperNamed = not(value)
+    end
+    
+    get properNamed()
+        return not(improperNamed)
+    end
+
 end

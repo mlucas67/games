@@ -1,0 +1,8 @@
+$catalog Nothing local
+class Nothing inherits Object
+    
+    public function isNothing()
+        return @true
+    end
+
+end

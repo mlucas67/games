@@ -1,3 +1,31 @@
 $catalog Region local
+$include constants.h
 class Region inherits Object
+
+    private publicallyNamed
+
+    public sub create.object()
+        canRepeat = @true
+        isUnderstood = @true
+        specification = "Represents a broader area than a single room, and allows rules to apply to a whole geographical territory.  Each region can contain many rooms, and regions can even be inside each other, though they cannot otherwise overlap.  For instance, the room Place d'Italie might be inside the region 13th Arrondissement, which in turn is inside the region Paris.  Regions are useful mainly when the world is a large one, and are optional."
+        
+        publicallyNamed = @true
+    end
+    
+    set publicallyNamed(value=true) var.args
+        publicallyNamed = value
+    end
+    
+    get publicallyNamed()
+        return publicallyNamed
+    end
+    
+    set privatelyNamed(value=true) var.args
+        publicallyNamed = not(value)
+    end
+    
+    get privatelyNamed()
+        return not(publicallyNamed)
+    end    
+
 end

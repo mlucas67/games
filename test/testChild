@@ -1,0 +1,4 @@
+program testChild
+    child = object("Child")
+    child->something
+end

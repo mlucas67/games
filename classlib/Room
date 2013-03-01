@@ -1,3 +1,69 @@
 $catalog Room local
+$include constants.h
 class Room inherits Object
+
+    private publicallyNamed, lighted, unvisited
+    
+    public description, mapRegion
+
+    public sub create.object()
+        canRepeat = @true
+        isUnderstood = @true
+        specification = "Represents geographical locations, both indoor and outdoor, which are not necessarily areas in a building. A player in one room is mostly unable to sense, or interact with, anything in a different room.  Rooms are arranged in a map."
+
+        publicallyNamed = @true
+        lighted = @true
+        unvisited = @true
+        description = ''
+        mapRegion = object("Nothing")
+    end
+    
+    set publicallyNamed(value=true) var.args
+        publicallyNamed = value
+    end
+    
+    get publicallyNamed()
+        return publicallyNamed
+    end
+    
+    set privatelyNamed(value=true) var.args
+        publicallyNamed = not(value)
+    end
+    
+    get privatelyNamed()
+        return not(publicallyNamed)
+    end
+    
+    set lighted(value=true) var.args
+        lighted = value
+    end
+    
+    get lighted()
+        return lighted
+    end
+    
+    set dark(value=true) var.args
+        lighted = not(value)
+    end
+    
+    get dark()
+        return not(lighted)
+    end
+    
+    set unvisited(value=true) var.args
+        unvisited = value
+    end
+    
+    get unvisited()
+        return unvisited
+    end
+    
+    set visited(value=true) var.args
+        unvisited = not(value)
+    end
+    
+    get visited()
+        return not(unvisited)
+    end
+
 end
